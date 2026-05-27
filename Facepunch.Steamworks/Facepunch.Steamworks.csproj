@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+		    <RootNamespace>Steamworks</RootNamespace>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>	
+		    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+        <Platforms>windows-x64;linux-x64</Platforms>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Platform)' == 'linux-x64'">
+      <TargetFramework>net10.0</TargetFramework>
+      <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+      <DefineConstants>$(DefineConstants);PLATFORM_POSIX</DefineConstants>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Platform)' == 'windows-x64'">
+      <TargetFramework>net10.0-windows</TargetFramework>
+      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+      <DefineConstants>$(DefineConstants);PLATFORM_WIN64</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Condition="'$(Platform)' == 'linux-x64'" Include="..\Dependencies\linux-x64\libsteam_api.so" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+      <None Condition="'$(Platform)' == 'windows-x64'" Include="..\Dependencies\windows-x64\steam_api64.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    </ItemGroup>
+
+</Project>

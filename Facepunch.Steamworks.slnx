@@ -1,0 +1,18 @@
+<Solution>
+  <Configurations>
+    <Platform Name="linux-x64" />
+    <Platform Name="windows-x64" />
+  </Configurations>
+  <Project Path="Facepunch.Steamworks.Test/Facepunch.Steamworks.Test.csproj">
+    <Platform Solution="*|linux-x64" Project="linux-x64" />
+    <Platform Solution="*|windows-x64" Project="windows-x64" />
+  </Project>
+  <Project Path="Facepunch.Steamworks/Facepunch.Steamworks.csproj">
+    <Platform Solution="*|linux-x64" Project="linux-x64" />
+    <Platform Solution="*|windows-x64" Project="windows-x64" />
+  </Project>
+  <Project Path="Generator/Generator.csproj">
+    <Platform Solution="*|linux-x64" Project="linux-x64" />
+    <Platform Solution="*|windows-x64" Project="windows-x64" />
+  </Project>
+</Solution>
