@@ -10,7 +10,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	public class UgcEditor
     {
 		[TestMethod]
@@ -27,7 +26,7 @@ namespace Steamworks
 							  .SubmitAsync();
 
 			Assert.IsTrue( result.Success );
-			Assert.AreNotEqual( result.FileId.Value, 0 );
+			Assert.AreNotEqual( 0UL, result.FileId.Value );
 
 			var deleted = await SteamUGC.DeleteFileAsync( result.FileId );
 			Assert.IsTrue( deleted );
@@ -52,7 +51,7 @@ namespace Steamworks
 			Console.WriteLine( $"Description: {description}" );
 
 			Assert.IsTrue( result.Success );
-			Assert.AreNotEqual( result.FileId.Value, 0 );
+			Assert.AreNotEqual( 0UL, result.FileId.Value );
 
 			var file = await Steamworks.SteamUGC.QueryFileAsync( result.FileId );
 
@@ -60,8 +59,8 @@ namespace Steamworks
 			Console.WriteLine( $"Title: {file.Value.Title}" );
 			Console.WriteLine( $"Description: {file.Value.Description}" );
 
-			Assert.AreEqual( file.Value.Title, fileName );
-			Assert.AreEqual( file.Value.Description, description );
+			Assert.AreEqual( fileName, file.Value.Title );
+			Assert.AreEqual( description, file.Value.Description );
 
 			var deleted = await SteamUGC.DeleteFileAsync( result.FileId );
 			Assert.IsTrue( deleted );
@@ -141,7 +140,7 @@ namespace Steamworks
 								  .SubmitAsync();
 
 				Assert.IsTrue( result.Success );
-				Assert.AreNotEqual( result.FileId.Value, 0 );
+				Assert.AreNotEqual( 0UL, result.FileId.Value );
 
 				fileid = result.FileId;
 			}
@@ -157,7 +156,7 @@ namespace Steamworks
 				var result = await editor.SubmitAsync();
 
 				Assert.IsTrue( result.Success );
-				Assert.AreEqual( result.FileId, fileid );
+				Assert.AreEqual( fileid, result.FileId );
 			}
 
 			await Task.Delay( 1000 );
@@ -167,8 +166,8 @@ namespace Steamworks
 			//
 			{
 				var details = await SteamUGC.QueryFileAsync( fileid ) ?? throw new Exception( "Somethign went wrong" );
-				Assert.AreEqual( details.Id, fileid );
-				Assert.AreEqual( details.Title, "An Edited File" );
+				Assert.AreEqual( fileid, details.Id );
+				Assert.AreEqual( "An Edited File", details.Title );
 			}
 
 			//

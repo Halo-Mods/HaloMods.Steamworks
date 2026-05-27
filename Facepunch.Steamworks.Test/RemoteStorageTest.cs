@@ -10,7 +10,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	public class RemoteStorageTest
 	{
 		[TestMethod]
@@ -44,7 +43,7 @@ namespace Steamworks
 
 			Assert.IsTrue( written );
 			Assert.IsTrue( SteamRemoteStorage.FileExists( "testfile" ) );
-			Assert.AreEqual( SteamRemoteStorage.FileSize( "testfile" ), testFile.Length );
+			Assert.AreEqual( testFile.Length, SteamRemoteStorage.FileSize("testfile") );
 		}
 
 		[TestMethod]
@@ -61,8 +60,8 @@ namespace Steamworks
 				Assert.AreEqual( data[i], (byte)i );
 			}
 
-			Assert.AreEqual( SteamRemoteStorage.FileSize( "testfile" ), data.Length );
-			Assert.AreEqual( SteamRemoteStorage.FileSize( "testfile" ), 1024 * 1024 * 100 );
+			Assert.AreEqual( data.Length, SteamRemoteStorage.FileSize( "testfile" ) );
+			Assert.AreEqual( 1024 * 1024 * 100, SteamRemoteStorage.FileSize("testfile") );
 		}
 
 		[TestMethod]

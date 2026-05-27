@@ -10,7 +10,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	public class GameServerStatsTest
 	{
 		static SteamId Garry = 76561197960279927;
@@ -19,7 +18,7 @@ namespace Steamworks
         public async Task GetAchievement()
         {
 			var result = await SteamServerStats.RequestUserStatsAsync( Garry );
-			Assert.AreEqual( result, Result.OK );
+			Assert.AreEqual( Result.OK, result );
 
 			var value = SteamServerStats.GetAchievement( Garry, "COLLECT_100_WOOD" );
 			Assert.IsTrue( value );

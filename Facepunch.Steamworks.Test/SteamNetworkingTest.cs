@@ -10,7 +10,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	public class SteamNetworkingTest
     {
 		[TestMethod]
@@ -28,9 +27,9 @@ namespace Steamworks
 
 			Assert.IsTrue( packet.HasValue );
 
-			Assert.AreEqual( packet.Value.SteamId, SteamClient.SteamId );
-			Assert.AreEqual( packet.Value.Data[1], 2 );
-			Assert.AreEqual( packet.Value.Data.Length, 3 );
+			Assert.AreEqual( SteamClient.SteamId, packet.Value.SteamId );
+			Assert.AreEqual( 2, packet.Value.Data[1] );
+			Assert.AreEqual( 3, packet.Value.Data.Length );
 		}
 	}
 

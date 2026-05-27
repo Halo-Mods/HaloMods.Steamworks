@@ -9,7 +9,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-    [DeploymentItem( "steam_api.dll" )]
     public class AppTest
     {
 		[AssemblyInitialize]

@@ -11,7 +11,6 @@ namespace Steamworks
 {
 	[TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-    [DeploymentItem( "steam_api.dll" )]
     public partial class NetworkingSocketsTest
 	{
 		void DebugOutput( NetDebugOutput type, string text )
@@ -150,12 +149,12 @@ namespace Steamworks
 		{
 			{
 				var n = NetAddress.From( "127.0.0.1", 12445 );
-				Assert.AreEqual( n.ToString(), "127.0.0.1:12445" );
+				Assert.AreEqual( "127.0.0.1:12445", n.ToString() );
 			}
 
 			{
 				var n = NetAddress.AnyIp( 5543 );
-				Assert.AreEqual( n.ToString(), "[::]:5543" );
+				Assert.AreEqual( "[::]:5543", n.ToString() );
 			}
 		}
 	}

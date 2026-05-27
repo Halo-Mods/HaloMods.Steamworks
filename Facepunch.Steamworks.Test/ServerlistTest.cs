@@ -11,7 +11,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	public partial class ServerListTest
     {
         [TestMethod]
@@ -181,7 +180,7 @@ namespace Steamworks
 
 				foreach ( var server in list.Responsive )
 				{
-					Assert.AreEqual( server.Map.ToLower(), "de_dust" );
+					Assert.AreEqual( "de_dust", server.Map.ToLower() );
 
 					Console.WriteLine( $"[{server.Map}] - {server.Name}" );
 				}
@@ -239,7 +238,7 @@ namespace Steamworks
 				Console.WriteLine( $"Found {list.Responsive.Count} Responsive Servers" );
 				Console.WriteLine( $"Found {list.Unresponsive.Count} Unresponsive Servers" );
 
-				Assert.AreNotEqual( list.Responsive.Count, 0 );
+				Assert.AreNotEqual( 0, list.Responsive.Count );
 
 				foreach ( var server in list.Responsive )
 				{

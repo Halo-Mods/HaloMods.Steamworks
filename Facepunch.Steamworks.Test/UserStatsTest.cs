@@ -10,7 +10,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	public class UserStatsTest
 	{
 		[TestMethod]
@@ -35,7 +34,7 @@ namespace Steamworks
 		public async Task PlayerCountAsync()
 		{
 			var players = await SteamUserStats.PlayerCountAsync();
-			Assert.AreNotEqual( players, -1 );
+			Assert.AreNotEqual( -1, players );
 			Console.WriteLine( $"players:	{players}" );
 		}
 		
@@ -55,7 +54,7 @@ namespace Steamworks
 				await Task.Delay( 10 );
 			}
 
-			Assert.AreEqual( result, Result.OK );
+			Assert.AreEqual( Result.OK, result );
 
 		}
 
@@ -175,19 +174,19 @@ namespace Steamworks
 
 			// Download stats
 			var status = await friend.RequestUserStatsAsync();
-			Assert.AreNotEqual( false, status );
+            Assert.AreNotEqual( false, status );
 
-			var deaths = friend.GetStatInt( "deaths" );
+            var deaths = friend.GetStatInt( "deaths" );
 
 			Console.WriteLine( $"Hezzy has died {deaths} times" );
 
 			Assert.AreNotEqual( 0, deaths );
 
 			var unlocked = friend.GetAchievement( "COLLECT_100_WOOD" );
-			Assert.AreNotEqual( false, unlocked );
+            Assert.AreNotEqual( false, unlocked );
 
-			var when = friend.GetAchievementUnlockTime( "COLLECT_100_WOOD" );
-			Assert.AreNotEqual( when, DateTime.MinValue );
+            var when = friend.GetAchievementUnlockTime( "COLLECT_100_WOOD" );
+			Assert.AreNotEqual( DateTime.MinValue, when );
 
 			Console.WriteLine( $"Hezzy unlocked COLLECT_100_WOOD {when}" );
 		}

@@ -6,7 +6,6 @@ using Steamworks.Data;
 namespace Steamworks
 {
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	[TestClass]
     public partial class GameServerTest
     {
@@ -92,7 +91,7 @@ namespace Steamworks
 				await Task.Delay( 10 );
 			}
 
-			Assert.AreEqual( response, AuthResponse.OK );
+			Assert.AreEqual( AuthResponse.OK, response );
 
 			if ( failed != null )
 				Assert.Fail( failed );
@@ -104,7 +103,7 @@ namespace Steamworks
 			// The client is leaving, and now wants to cancel the ticket
 			//
 
-			Assert.AreNotEqual( 0, clientTicket.Handle );
+			Assert.AreNotEqual( 0U, clientTicket.Handle );
 			clientTicket.Cancel();
 
 			//
@@ -121,8 +120,8 @@ namespace Steamworks
 			if ( failed != null )
 				Assert.Fail( failed );
 
-			//Assert.AreEqual( response, AuthResponse.AuthTicketCanceled );
+            //Assert.AreEqual( AuthResponse.AuthTicketCanceled, response );
 
-		}
+        }
     }
 }

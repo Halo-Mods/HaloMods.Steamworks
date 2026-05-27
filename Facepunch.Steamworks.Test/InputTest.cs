@@ -11,7 +11,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	[DeploymentItem( "controller_config/game_actions_252490.vdf" )]
     public class InputTest
 	{

@@ -10,7 +10,6 @@ namespace Steamworks
 {
     [TestClass]
     [DeploymentItem( "steam_api64.dll" )]
-	[DeploymentItem( "steam_api.dll" )]
 	public class InventoryTest
 	{
 		[TestMethod]
@@ -160,7 +159,7 @@ namespace Steamworks
 
 				foreach ( var exchange in exchangelist )
 				{
-					Assert.AreEqual( exchange.Result, def );
+					Assert.AreEqual( def, exchange.Result );
 
 					Console.WriteLine( $"{def.Name}:" );
 
@@ -214,7 +213,7 @@ namespace Steamworks
 			{
 				var result = await SteamInventory.DeserializeAsync( data );
 				Assert.IsTrue( result.HasValue );
-				Assert.AreEqual( itemCount, result.Value.ItemCount );
+				Assert.AreEqual( result.Value.ItemCount, itemCount );
 				result.Value.Dispose();
 			}
 		}
