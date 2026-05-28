@@ -61,7 +61,7 @@ jobs:
           retention-days: 1
 
   release:
-    needs: build
+    needs: build-release
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request' 
     
