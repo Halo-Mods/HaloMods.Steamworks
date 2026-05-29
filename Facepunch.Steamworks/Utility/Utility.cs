@@ -38,7 +38,16 @@ namespace Steamworks
 
         static public uint IpToInt32( this IPAddress ipAddress )
         {
-            return Swap( (uint) ipAddress.Address );
+            byte[] bytes = ipAddress.GetAddressBytes();
+
+            uint address = 0;
+
+            if (bytes.Length == 4) 
+            {
+                address = BitConverter.ToUInt32(bytes, 0);
+            }
+
+            return address;
         }
 
         static public IPAddress Int32ToIp( uint ipAddress )

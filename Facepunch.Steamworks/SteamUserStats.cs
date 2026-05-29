@@ -17,7 +17,6 @@ namespace Steamworks
 			if ( Interface.Self == IntPtr.Zero ) return false;
 
 			InstallEvents();
-			RequestCurrentStats();
 
 			return true;
 		}
@@ -142,11 +141,10 @@ namespace Steamworks
 		/// <summary>
 		/// Asynchronously fetches global stats data, which is available for stats marked as 
 		/// "aggregated" in the App Admin panel of the Steamworks website.
-		/// You must have called <see cref="RequestCurrentStats"/> and it needs to return successfully via 
 		/// its callback prior to calling this.
 		/// </summary>
 		/// <param name="days">How many days of day-by-day history to retrieve in addition to the overall totals. The limit is <c>60</c>.</param>
-		/// <returns><see cref="Result.OK"/> indicates success, <see cref="Result.InvalidState"/> means you need to call <see cref="RequestCurrentStats"/> first, <see cref="Result.Fail"/> means the remote call failed</returns>
+		/// <returns><see cref="Result.OK"/> indicates success, <see cref="Result.Fail"/> means the remote call failed</returns>
 		public static async Task<Result> RequestGlobalStatsAsync( int days )
 		{
 			var result = await SteamUserStats.Internal.RequestGlobalStats( days );

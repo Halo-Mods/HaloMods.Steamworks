@@ -297,7 +297,6 @@ namespace Steamworks
 		public static void LogOnAnonymous()
 		{
 			Internal.LogOnAnonymous();
-			ForceHeartbeat();
 		}
 
 		/// <summary>
