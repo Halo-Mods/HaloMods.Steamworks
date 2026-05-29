@@ -47,7 +47,7 @@ namespace Steamworks
                 address = BitConverter.ToUInt32(bytes, 0);
             }
 
-            return address;
+            return Swap( address );
         }
 
         static public IPAddress Int32ToIp( uint ipAddress )
