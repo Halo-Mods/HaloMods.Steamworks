@@ -22,4 +22,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="steam_sdk\**\*" Link="steam_sdk\%(RecursiveDir)\%(FileName)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+  </ItemGroup>
+  
 </Project>

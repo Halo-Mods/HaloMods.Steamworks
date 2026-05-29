@@ -28,7 +28,7 @@ namespace Generator
                 Header();
                 Enums();
                 Footer();
-                System.IO.File.WriteAllText( $"{folder}SteamEnums.cs", sb.ToString() );
+                File.WriteAllText( $"{folder}SteamEnums.cs", sb.ToString() );
             }            
             
             {
@@ -36,7 +36,7 @@ namespace Generator
                 Header();
                 CustomEnums();
                 Footer();
-                System.IO.File.WriteAllText( $"{folder}CustomEnums.cs", sb.ToString() );
+                File.WriteAllText( $"{folder}CustomEnums.cs", sb.ToString() );
             }
 
             {
@@ -44,7 +44,7 @@ namespace Generator
                 Header( "Steamworks.Data" );
                 Types();
                 Footer();
-                System.IO.File.WriteAllText( $"{folder}SteamTypes.cs", sb.ToString() );
+                File.WriteAllText( $"{folder}SteamTypes.cs", sb.ToString() );
             }
 
             {
@@ -52,7 +52,7 @@ namespace Generator
                 Header( "Steamworks.Data" );
                 Callbacks();
                 Footer();
-                System.IO.File.WriteAllText( $"{folder}SteamCallbacks.cs", sb.ToString() );
+                File.WriteAllText( $"{folder}SteamCallbacks.cs", sb.ToString() );
             }
 
             {
@@ -60,7 +60,7 @@ namespace Generator
                 Header( "Steamworks.Data" );
                 Structs();
                 Footer();
-                System.IO.File.WriteAllText( $"{folder}SteamStructs.cs", sb.ToString() );
+                File.WriteAllText( $"{folder}SteamStructs.cs", sb.ToString() );
             }
 
             {
@@ -68,7 +68,7 @@ namespace Generator
                 Header( "Steamworks.Data" );
                 Constants();
                 Footer();
-                System.IO.File.WriteAllText( $"{folder}SteamConstants.cs", sb.ToString() );
+                File.WriteAllText( $"{folder}SteamConstants.cs", sb.ToString() );
             }            
             
             {
@@ -76,7 +76,7 @@ namespace Generator
                 Header( "Steamworks.Data" );
                 StructFunctions();
                 Footer();
-                System.IO.File.WriteAllText( $"{folder}SteamStructFunctions.cs", sb.ToString() );
+                File.WriteAllText( $"{folder}SteamStructFunctions.cs", sb.ToString() );
             }
 
 			{
