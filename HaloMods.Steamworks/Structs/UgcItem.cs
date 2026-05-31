@@ -360,7 +360,17 @@ namespace Steamworks.Ugc
 		/// </summary>
 		public string StatsUrl => $"http://steamcommunity.com/sharedfiles/filedetails/stats/{Id}";
 
-		public ulong NumSubscriptions { get; internal set; }
+		/// <summary>
+		/// The URL to the author's profile page
+		/// </summary>
+		public string AuthorUrl => $"http://steamcommunity.com/profiles/{Owner.Id}";
+
+        /// <summary>
+        /// The URL to the author's workshop page for the current appid
+        /// </summary>
+        public string AuthorPageUrl => $"http://steamcommunity.com/profiles/{Owner.Id}/myworkshopfiles/?appid={SteamClient.AppId}";
+
+        public ulong NumSubscriptions { get; internal set; }
 		public ulong NumFavorites { get; internal set; }
 		public ulong NumFollowers { get; internal set; }
 		public ulong NumUniqueSubscriptions { get; internal set; }
