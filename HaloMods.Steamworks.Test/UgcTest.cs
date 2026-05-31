@@ -15,13 +15,13 @@ namespace Steamworks
 		[TestMethod]
         public void Download()
         {
-			SteamUGC.Download( 1717844711 );
+			SteamUGC.Download( 2962107814 );
 		}
 
 		[TestMethod]
         public async Task GetInformation()
         {
-			var itemInfo = await Ugc.Item.GetAsync( 1720164672 );
+			var itemInfo = await Ugc.Item.GetAsync( 2962107814 );
 
 			Assert.IsTrue( itemInfo.HasValue );
 

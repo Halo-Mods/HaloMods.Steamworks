@@ -12,18 +12,18 @@ namespace Steamworks
     [DeploymentItem( "steam_api64.dll" )]
 	public class GameServerStatsTest
 	{
-		static SteamId Garry = 76561197960279927;
+		static SteamId David = 76561198980310360;
 
 		[TestMethod]
         public async Task GetAchievement()
         {
-			var result = await SteamServerStats.RequestUserStatsAsync( Garry );
+			var result = await SteamServerStats.RequestUserStatsAsync( David );
 			Assert.AreEqual( Result.OK, result );
 
-			var value = SteamServerStats.GetAchievement( Garry, "COLLECT_100_WOOD" );
+			var value = SteamServerStats.GetAchievement( David, "10_0_DIRGE_OF_MADRIGAL");
 			Assert.IsTrue( value );
 
-			value = SteamServerStats.GetAchievement( Garry, "ACHIVEMENT_THAT_DOESNT_EXIST" );
+			value = SteamServerStats.GetAchievement( David, "ACHIVEMENT_THAT_DOESNT_EXIST" );
 			Assert.IsFalse( value );
 		}
 	}

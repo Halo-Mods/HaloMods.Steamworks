@@ -77,7 +77,7 @@ namespace Steamworks
 				list.AddFilter( "secure", "1" );
 				list.AddFilter( "and", "1" );
 				list.AddFilter( "gametype", "v2405" );
-				list.AddFilter( "appid", "252490" );
+				list.AddFilter( "appid", "976730" );
 				list.AddFilter( "gamedir", "rust" );
 				list.AddFilter( "empty", "1" );
 

@@ -51,7 +51,7 @@ namespace Steamworks
 		[TestMethod]
 		public async Task LargeAvatar()
 		{
-			ulong id = (ulong)(76561197960279927 + (new Random().Next() % 10000));
+			ulong id = (ulong)(76561198980310360 + (new Random().Next() % 10000));
 
 			var image = await SteamFriends.GetLargeAvatarAsync( id );
 			if ( !image.HasValue )
@@ -66,7 +66,7 @@ namespace Steamworks
 		[TestMethod]
 		public async Task MediumAvatar()
 		{
-			ulong id = (ulong)(76561197960279927 + (new Random().Next() % 10000));
+			ulong id = (ulong)(76561198980310360 + (new Random().Next() % 10000));
 
 			Console.WriteLine( $"Steam: http://steamcommunity.com/profiles/{id}" );
 
@@ -83,7 +83,7 @@ namespace Steamworks
 		[TestMethod]
 		public async Task SmallAvatar()
 		{
-			ulong id = (ulong)(76561197960279927 + (new Random().Next() % 10000));
+			ulong id = (ulong)(76561198980310360 + (new Random().Next() % 10000));
 
 			var image = await SteamFriends.GetSmallAvatarAsync( id );
 			if ( !image.HasValue )

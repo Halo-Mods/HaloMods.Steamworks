@@ -10,7 +10,7 @@ namespace Facepunch.Steamworks.Test
         [TestMethod]
         public void StatsGet()
         {
-            using ( var server = new Facepunch.Steamworks.Server( 252490, new ServerInit( "rust", "Rust" ) ) )
+            using ( var server = new Facepunch.Steamworks.Server( 976730, new ServerInit( "rust", "Rust" ) ) )
             {
                 Assert.IsTrue( server.IsValid );
                 server.LogOnAnonymous();

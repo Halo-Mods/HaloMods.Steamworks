@@ -91,7 +91,8 @@ namespace Steamworks.Ugc
 		public Query SortByVoteScore() { userSort = UserUGCListSortOrder.VoteScoreDesc; return this; }
 		public Query SortByModeration() { userSort = UserUGCListSortOrder.ForModeration; return this; }
 
-        public Query WhereSearchText(string searchText) { this.searchText = searchText; return this; }
+        public Query WhereSearchText( string searchText ) { this.searchText = searchText; return this; }
+		public Query WhereCreatorApp( AppId creatorApp ) { this.creatorApp = creatorApp; return this; } 
 
 		#endregion
 
@@ -110,7 +111,6 @@ namespace Steamworks.Ugc
 			if ( page <= 0 ) throw new System.Exception( "page should be > 0" );
 
 			if ( consumerApp == 0 ) consumerApp = SteamClient.AppId;
-			if ( creatorApp == 0 ) creatorApp = consumerApp;
 
 			UGCQueryHandle_t handle;
 

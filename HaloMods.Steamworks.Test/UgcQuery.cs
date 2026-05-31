@@ -25,27 +25,41 @@ namespace Steamworks
 		}
 
 		[TestMethod]
+		public async Task QueryWithCreatorApp() 
+		{
+            var q = Ugc.Query.All
+							.WhereCreatorApp( 976730 );
+
+            var result = await q.GetPageAsync(1);
+            Assert.IsNotNull(result);
+
+            Console.WriteLine($"ResultCount: {result?.ResultCount}");
+            Console.WriteLine($"TotalCount: {result?.TotalCount}");
+        }
+
+        [TestMethod]
 		public async Task QueryWithTags()
 		{
-			var q = Ugc.Query.All
-							.WithTag( "Version3" )
-							.WithTag( "Hunting Bow" )
-							.MatchAllTags();
+            var q = Ugc.Query.All
+                            .WithTag( "halo4" )
+                            .WithTag( "campaign" )
+                            .MatchAllTags();
 
-			var result = await q.GetPageAsync( 1 );
-			Assert.IsNotNull( result );
-			Assert.IsTrue( result?.ResultCount > 0 );
+            var result = await q.GetPageAsync( 1 );
+            Assert.IsNotNull( result );
+            Assert.IsTrue( result?.ResultCount > 0 );
 
 			Console.WriteLine( $"ResultCount: {result?.ResultCount}" );
 			Console.WriteLine( $"TotalCount: {result?.TotalCount}" );
 
-			foreach ( var entry in result.Value.Entries )
-			{
-				Assert.IsTrue( entry.HasTag( "Version3" ), "Has Tag Version3" );
-				Assert.IsTrue( entry.HasTag( "Hunting Bow" ), "Has Tag HuntingBow" );
+            foreach ( var entry in result.Value.Entries )
+            {
+                Console.WriteLine($"Name: {entry.Title} [{entry.Id}]");
 
-			}
-		}
+                Assert.IsTrue(entry.HasTag("halo4"), $"Item '{entry.Title}' is missing 'halo4' tag.");
+                Assert.IsTrue(entry.HasTag("campaign"), $"Item '{entry.Title}' is missing 'campaign' tag.");
+            }
+        }
 
 		[TestMethod]
 		public async Task QueryAllFromFriends()
@@ -84,10 +98,10 @@ namespace Steamworks
 		}
 
 		[TestMethod]
-		public async Task QueryGarry()
+		public async Task QueryDavid()
 		{
 			var q = Ugc.Query.All
-							.WhereUserPublished( 76561197960279927 );
+							.WhereUserPublished( 76561198980310360 );
 
 			var result = await q.GetPageAsync( 1 );
 			Assert.IsNotNull( result );
@@ -105,9 +119,9 @@ namespace Steamworks
 		[TestMethod]
 		public async Task QuerySpecificFile()
 		{
-			var item = await SteamUGC.QueryFileAsync( 1734427277 );
+            var item = await SteamUGC.QueryFileAsync( 2962107814 );
 
-			Assert.IsTrue( item.HasValue );
+            Assert.IsTrue( item.HasValue );
 			Assert.IsNotNull( item.Value.Title );
 
 			Console.WriteLine( $"Title: {item?.Title}" );

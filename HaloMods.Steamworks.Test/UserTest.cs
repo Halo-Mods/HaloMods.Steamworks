@@ -112,7 +112,7 @@ namespace Steamworks
 		[TestMethod]
 		public async Task GetStoreAuthUrlAsync()
 		{
-			var rustskins = await SteamUser.GetStoreAuthUrlAsync( "https://store.steampowered.com/itemstore/252490/" );
+			var rustskins = await SteamUser.GetStoreAuthUrlAsync( "https://store.steampowered.com/itemstore/976730/" );
 
 			Assert.IsNotNull( rustskins );
 			Console.WriteLine( $"rustskins: {rustskins}" );

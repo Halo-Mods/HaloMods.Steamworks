@@ -170,7 +170,7 @@ namespace Steamworks
 		[TestMethod]
 		public async Task GetFriendStats()
 		{
-			var friend = new Friend( 76561197965732579 ); // Hezzy
+			var friend = new Friend( 76561198980310360 ); // Hezzy
 
 			// Download stats
 			var status = await friend.RequestUserStatsAsync();
@@ -182,13 +182,13 @@ namespace Steamworks
 
 			Assert.AreNotEqual( 0, deaths );
 
-			var unlocked = friend.GetAchievement( "COLLECT_100_WOOD" );
+			var unlocked = friend.GetAchievement( "10_0_DIRGE_OF_MADRIGAL" );
             Assert.AreNotEqual( false, unlocked );
 
-            var when = friend.GetAchievementUnlockTime( "COLLECT_100_WOOD" );
+            var when = friend.GetAchievementUnlockTime( "10_0_DIRGE_OF_MADRIGAL" );
 			Assert.AreNotEqual( DateTime.MinValue, when );
 
-			Console.WriteLine( $"Hezzy unlocked COLLECT_100_WOOD {when}" );
+			Console.WriteLine( $"Hezzy unlocked 10_0_DIRGE_OF_MADRIGAL {when}" );
 		}
 
 		[TestMethod]
@@ -215,7 +215,5 @@ namespace Steamworks
 				Console.WriteLine( $"{i} : {history[i]}" );
 			}
 		}
-
 	}
-
 }
