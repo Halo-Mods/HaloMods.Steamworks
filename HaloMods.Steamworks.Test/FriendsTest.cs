@@ -125,6 +125,54 @@ namespace Steamworks
 			await Task.Delay( 2000 );
 		}
 
+		[TestMethod]
+		public void UpdateRichPresence()
+		{
+			SteamFriends.ClearRichPresence();
+
+			if (SteamClient.IsValid)
+			{
+				Console.WriteLine($"KEY: steam_display = {SteamFriends.SetRichPresence("steam_display", "#PRESENCE_IN_GAME_THEATER")}");
+				Console.WriteLine($"KEY: mainmenu = {SteamFriends.SetRichPresence("mainmenu", "Theater")}");
+				Console.WriteLine($"KEY: halo_title = {SteamFriends.SetRichPresence("halo_title", "Halo1")}");
+			}
+		}
+
+        [TestMethod]
+        public void GetRichPresenceKeys()
+        {
+            if (SteamClient.IsValid)
+            {
+                string[] keys = SteamFriends.GetRichPresenceKeys();
+
+                foreach (string key in keys)
+                {
+                    Console.WriteLine($"KEY: {key}");
+                }
+            }
+        }
+
+        [TestMethod]
+        public void GetRichPresence()
+        {
+            if (SteamClient.IsValid)
+			{
+                string[] keys = SteamFriends.GetRichPresenceKeys();
+
+                foreach (string key in keys)
+                {
+					string presence = SteamFriends.GetRichPresence(key) ?? "NULL";
+
+                    Console.WriteLine($"KEY: {key} = {presence}");
+                }
+            }
+		}
+
+        [TestMethod]
+        public void ClearRichPresence() 
+		{
+            SteamFriends.ClearRichPresence();
+        }
 
 		public static void DrawImage( Image img )
 		{

@@ -325,6 +325,20 @@ namespace Steamworks
 			return SteamUtils.GetImage( imageid );
 		}
 
+		public static string[] GetRichPresenceKeys() 
+		{
+			int keyCount = Internal.GetFriendRichPresenceKeyCount(SteamClient.SteamId);
+
+			string[] keys = new string[keyCount];
+
+            for (int keyIndex = 0; keyIndex < keyCount; keyIndex++) 
+			{
+				keys[keyIndex] = Internal.GetFriendRichPresenceKeyByIndex(SteamClient.SteamId, keyIndex);
+            }
+
+			return keys;
+		}
+
 		/// <summary>
 		/// Find a rich presence value by key for current user. Will be null if not found.
 		/// </summary>
@@ -333,7 +347,7 @@ namespace Steamworks
 			if ( richPresence.TryGetValue( key, out var val ) )
 				return val;
 
-			return null;
+			return Internal.GetFriendRichPresence(SteamClient.SteamId, key);
 		}
 
 		/// <summary>
