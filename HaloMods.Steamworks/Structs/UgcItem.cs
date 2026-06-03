@@ -44,10 +44,15 @@ namespace Steamworks.Ugc
 		/// </summary>
 		public Dictionary<string,string> KeyValueTags { get; internal set; }
 
-		/// <summary>
-		/// App Id of the app that created this item
-		/// </summary>
-		public AppId CreatorApp => details.CreatorAppID;
+        /// <summary>
+        /// Toal install size in bytes for this item if not installed
+        /// </summary>
+		public ulong TotalSizeBytes => details.TotalFilesSize;
+
+        /// <summary>
+        /// App Id of the app that created this item
+        /// </summary>
+        public AppId CreatorApp => details.CreatorAppID;
 
 		/// <summary>
 		/// App Id of the app that will consume this item.
