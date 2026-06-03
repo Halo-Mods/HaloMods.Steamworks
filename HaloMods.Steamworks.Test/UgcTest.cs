@@ -35,6 +35,7 @@ namespace Steamworks
 			Console.WriteLine($"Owner: {itemInfo?.Owner}");
 			Console.WriteLine($"Score: {itemInfo?.Score}");
             Console.WriteLine($"Size: {itemInfo?.TotalSizeBytes}");
+            Console.WriteLine($"Size On Disk: {itemInfo?.SizeBytes}");
             Console.WriteLine($"PreviewImageUrl: {itemInfo?.PreviewImageUrl}");
 		}
 
@@ -56,6 +57,7 @@ namespace Steamworks
             Console.WriteLine($"Owner: {itemInfo?.Owner}");
             Console.WriteLine($"Score: {itemInfo?.Score}");
             Console.WriteLine($"Size: {itemInfo?.TotalSizeBytes}");
+            Console.WriteLine($"Size On Disk: {itemInfo?.SizeBytes}");
             Console.WriteLine($"PreviewImageUrl: {itemInfo?.PreviewImageUrl}");
         }
     }
