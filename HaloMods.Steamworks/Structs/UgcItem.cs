@@ -245,7 +245,12 @@ namespace Steamworks.Ugc
 			}
 		}
 
-		internal static Item From( SteamUGCDetails_t details )
+        public async void GetOwnerInfoAsync()
+        {
+            await Owner.RequestInfoAsync();
+        }
+
+        internal static Item From( SteamUGCDetails_t details )
 		{
 			var d = new Item
 			{

@@ -30,6 +30,7 @@ namespace Steamworks.Ugc
 					{
 						var item = Item.From( details );
 
+                        item.GetOwnerInfoAsync();
 
 						if ( ReturnsDefaultStats )
 						{
