@@ -19,22 +19,44 @@ namespace Steamworks
 		}
 
 		[TestMethod]
-        public async Task GetInformation()
-        {
-			var itemInfo = await Ugc.Item.GetAsync( 2962107814 );
+		public async Task GetInformationValid()
+		{
+			var itemInfo = await Ugc.Item.GetAsync(2962107814);
 
-			Assert.IsTrue( itemInfo.HasValue );
+			Assert.IsTrue(itemInfo.HasValue);
 
-			Console.WriteLine( $"Title: {itemInfo?.Title}" );
-			Console.WriteLine( $"IsInstalled: {itemInfo?.IsInstalled}" );
-			Console.WriteLine( $"IsDownloading: {itemInfo?.IsDownloading}" );
-			Console.WriteLine( $"IsDownloadPending: {itemInfo?.IsDownloadPending}" );
-			Console.WriteLine( $"IsSubscribed: {itemInfo?.IsSubscribed}" );
-			Console.WriteLine( $"NeedsUpdate: {itemInfo?.NeedsUpdate}" );
-			Console.WriteLine( $"Description: {itemInfo?.Description}" );
-			Console.WriteLine( $"Owner: {itemInfo?.Owner}" );
-			Console.WriteLine( $"Score: {itemInfo?.Score}" );
-			Console.WriteLine( $"PreviewImageUrl: {itemInfo?.PreviewImageUrl}" );
+			Console.WriteLine($"Title: {itemInfo?.Title}");
+			Console.WriteLine($"IsInstalled: {itemInfo?.IsInstalled}");
+			Console.WriteLine($"IsDownloading: {itemInfo?.IsDownloading}");
+			Console.WriteLine($"IsDownloadPending: {itemInfo?.IsDownloadPending}");
+			Console.WriteLine($"IsSubscribed: {itemInfo?.IsSubscribed}");
+			Console.WriteLine($"NeedsUpdate: {itemInfo?.NeedsUpdate}");
+			Console.WriteLine($"Description: {itemInfo?.Description}");
+			Console.WriteLine($"Owner: {itemInfo?.Owner}");
+			Console.WriteLine($"Score: {itemInfo?.Score}");
+            Console.WriteLine($"Size: {itemInfo?.TotalSizeBytes}");
+            Console.WriteLine($"PreviewImageUrl: {itemInfo?.PreviewImageUrl}");
 		}
-	}
+
+        [TestMethod]
+        public async Task GetInformationInvalid()
+        {
+            // This id is a valid workshop item, however it has been removed or delisted
+            var itemInfo = await Ugc.Item.GetAsync(3691769975);
+
+            Assert.IsTrue(itemInfo.HasValue);
+
+            Console.WriteLine($"Title: {itemInfo?.Title}");
+            Console.WriteLine($"IsInstalled: {itemInfo?.IsInstalled}");
+            Console.WriteLine($"IsDownloading: {itemInfo?.IsDownloading}");
+            Console.WriteLine($"IsDownloadPending: {itemInfo?.IsDownloadPending}");
+            Console.WriteLine($"IsSubscribed: {itemInfo?.IsSubscribed}");
+            Console.WriteLine($"NeedsUpdate: {itemInfo?.NeedsUpdate}");
+            Console.WriteLine($"Description: {itemInfo?.Description}");
+            Console.WriteLine($"Owner: {itemInfo?.Owner}");
+            Console.WriteLine($"Score: {itemInfo?.Score}");
+            Console.WriteLine($"Size: {itemInfo?.TotalSizeBytes}");
+            Console.WriteLine($"PreviewImageUrl: {itemInfo?.PreviewImageUrl}");
+        }
+    }
 }
