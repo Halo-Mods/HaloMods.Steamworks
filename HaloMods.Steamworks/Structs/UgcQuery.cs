@@ -143,7 +143,7 @@ namespace Steamworks.Ugc
 			if ( result.Value.Result != Steamworks.Result.OK )
 				return null;
 
-			return new ResultPage
+			ResultPage resultPage = new()
 			{
 				Handle = result.Value.Handle,
 				ResultCount = (int) result.Value.NumResultsReturned,
@@ -155,6 +155,10 @@ namespace Steamworks.Ugc
 				ReturnsChildren = WantsReturnChildren ?? false,
 				ReturnsAdditionalPreviews = WantsReturnAdditionalPreviews ?? false,
 			};
+
+			await resultPage.WaitForUserNames();
+
+			return resultPage;
 		}
 
 	    #region SharedConstraints

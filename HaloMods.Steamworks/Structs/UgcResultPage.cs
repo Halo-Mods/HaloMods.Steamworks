@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-using Steamworks.Data;
+﻿using Steamworks.Data;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Steamworks.Ugc
 {
@@ -29,8 +31,6 @@ namespace Steamworks.Ugc
 					if ( SteamUGC.Internal.GetQueryUGCResult( Handle, i, ref details ) )
 					{
 						var item = Item.From( details );
-
-                        item.GetOwnerInfoAsync();
 
 						if ( ReturnsDefaultStats )
 						{
@@ -113,7 +113,25 @@ namespace Steamworks.Ugc
 			}
 		}
 
-		private ulong GetStat( uint index, ItemStatistic stat )
+        internal async Task WaitForUserNames()
+        {
+            bool gotAll = false;
+            while (!gotAll)
+            {
+                gotAll = true;
+                foreach (var item in Entries.ToList())
+                {
+                    if (item.Owner.Id.Value == 0) continue;
+                    if (!SteamFriends.Internal.RequestUserInformation(item.Owner.Id, true)) continue;
+
+                    gotAll = false;
+                }
+
+                await Task.Delay(1);
+            }
+        }
+
+        private ulong GetStat( uint index, ItemStatistic stat )
 		{
 			ulong val = 0;
 
