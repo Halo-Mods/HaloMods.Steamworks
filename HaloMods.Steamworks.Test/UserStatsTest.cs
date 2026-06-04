@@ -17,16 +17,16 @@ namespace Steamworks
         {
 			foreach ( var a in SteamUserStats.Achievements )
 			{
-				Console.WriteLine( $"{a.Identifier}" );
-				Console.WriteLine( $"	a.State: {a.State}" );
-				Console.WriteLine( $"	a.UnlockTime: {a.UnlockTime}" );
-				Console.WriteLine( $"	a.Name: {a.Name}" );
-				Console.WriteLine( $"	a.Description: {a.Description}" );
-				Console.WriteLine( $"	a.GlobalUnlocked:	{a.GlobalUnlocked}" );
+				Console.WriteLine( $"a.Identifier: {a.Identifier}" );
+				Console.WriteLine( $"a.State: {a.State}" );
+				Console.WriteLine( $"a.UnlockTime: {a.UnlockTime}" );
+				Console.WriteLine( $"a.Name: {a.Name}" );
+				Console.WriteLine( $"a.Description: {a.Description}" );
+				Console.WriteLine( $"a.GlobalUnlocked: {a.GlobalUnlocked}" );
 
 				var icon = await a.GetIconAsync();
 
-				Console.WriteLine( $"	a.Icon:	{icon}" );
+				Console.WriteLine( $"a.Icon: {icon}" );
 			}			
 		}
 
