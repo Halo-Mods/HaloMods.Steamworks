@@ -25,7 +25,8 @@ namespace Steamworks
 
 			Assert.IsTrue(itemInfo.HasValue);
 
-			Console.WriteLine($"Title: {itemInfo?.Title}");
+            Console.WriteLine($"Result: {itemInfo?.Result}");
+            Console.WriteLine($"Title: {itemInfo?.Title}");
 			Console.WriteLine($"IsInstalled: {itemInfo?.IsInstalled}");
 			Console.WriteLine($"IsDownloading: {itemInfo?.IsDownloading}");
 			Console.WriteLine($"IsDownloadPending: {itemInfo?.IsDownloadPending}");
@@ -47,6 +48,7 @@ namespace Steamworks
 
             Assert.IsTrue(itemInfo.HasValue);
 
+            Console.WriteLine($"Result: {itemInfo?.Result}");
             Console.WriteLine($"Title: {itemInfo?.Title}");
             Console.WriteLine($"IsInstalled: {itemInfo?.IsInstalled}");
             Console.WriteLine($"IsDownloading: {itemInfo?.IsDownloading}");
