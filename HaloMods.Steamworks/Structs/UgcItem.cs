@@ -47,7 +47,7 @@ namespace Steamworks.Ugc
         /// <summary>
         /// Toal install size in bytes for this item if not installed
         /// </summary>
-		public ulong TotalSizeBytes => details.TotalFilesSize;
+		public ulong TotalSizeBytes => SizeBytes == 0 ? details.TotalFilesSize : (ulong)SizeBytes;
 
         /// <summary>
         /// App Id of the app that created this item
