@@ -198,7 +198,8 @@ namespace Steamworks
 				messages[i]->FreeDataPtr = BufferManager.FreeFunctionPointer;
 			}
 
-			SteamNetworkingSockets.Internal.SendMessages( connectionCount, messages, messageNumberOrResults );
+            bool deleteFailedMessages = false; // Assume default behaviour for now
+            SteamNetworkingSockets.Internal.SendMessages( connectionCount, messages, messageNumberOrResults, deleteFailedMessages);
 
 			if (results == null)
 				return;

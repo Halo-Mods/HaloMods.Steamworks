@@ -88,7 +88,8 @@ namespace Steamworks.Data
 			message->IdxLane = laneIndex;
 
 			long messageNumber = 0;
-			SteamNetworkingSockets.Internal.SendMessages( 1, &message, &messageNumber );
+			bool deleteFailedMessages = false; // Assume default behaviour for now
+			SteamNetworkingSockets.Internal.SendMessages( 1, &message, &messageNumber, deleteFailedMessages);
 
 			return messageNumber >= 0
 				? Result.OK
